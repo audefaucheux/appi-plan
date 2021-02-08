@@ -5,7 +5,7 @@ interface RecipeCardProps {
   recipe: Recipe;
 }
 
-const RecipeCard = ({ recipe }: RecipeCardProps) => {
+const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
   return <div className="recipe-card">{recipe.name}</div>;
 };
 

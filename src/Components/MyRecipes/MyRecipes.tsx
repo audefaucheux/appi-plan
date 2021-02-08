@@ -3,7 +3,7 @@ import axios from "axios";
 import Recipe from "../../Constants/Recipe";
 import RecipeCard from "./RecipeCard";
 
-const MyRecipes = () => {
+const MyRecipes: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   const getRecipes = async () => {
