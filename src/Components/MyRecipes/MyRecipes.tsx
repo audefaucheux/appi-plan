@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Recipe from "../../Constants/Recipe";
+import RecipeCard from "./RecipeCard";
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -14,16 +15,6 @@ const MyRecipes = () => {
     }
   };
 
-  const renderRecipe = () => {
-    return (
-      <ul>
-        {recipes.map((recipe: Recipe, index: number) => (
-          <li key={index}>{recipe.name}</li>
-        ))}
-      </ul>
-    );
-  };
-
   useEffect(() => {
     getRecipes();
   }, []);
@@ -31,7 +22,9 @@ const MyRecipes = () => {
   return (
     <div>
       <h1>My Recipes</h1>
-      {renderRecipe()}
+      {recipes.map((recipe, index) => (
+        <RecipeCard key={index} recipe={recipe} />
+      ))}
     </div>
   );
 };
