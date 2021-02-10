@@ -1,4 +1,14 @@
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .recipe-card {
   border: solid;
-  margin: 1rem 0;
+  margin: 1rem 1rem;
+  width: 20rem;
+}
+
+.recipe-card img {
+  width: 18rem;
 }

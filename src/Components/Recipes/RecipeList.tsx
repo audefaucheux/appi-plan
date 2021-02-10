@@ -22,9 +22,11 @@ const RecipeList: React.FC = () => {
   return (
     <div>
       <h1>My Recipes</h1>
-      {recipes.map((recipe, index) => (
-        <RecipeCard key={index} recipe={recipe} />
-      ))}
+      <div className="recipe-list">
+        {recipes.map((recipe, index) => (
+          <RecipeCard key={index} recipe={recipe} />
+        ))}
+      </div>
     </div>
   );
 };
