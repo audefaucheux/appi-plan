@@ -3,7 +3,7 @@ import axios from "axios";
 import Recipe from "../../Constants/Recipe";
 import RecipeCard from "./RecipeCard";
 
-const MyRecipes: React.FC = () => {
+const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   const getRecipes = async () => {
@@ -29,4 +29,4 @@ const MyRecipes: React.FC = () => {
   );
 };
 
-export default MyRecipes;
+export default RecipeList;

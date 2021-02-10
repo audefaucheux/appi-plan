@@ -1,10 +1,10 @@
 import React from "react";
-import MyRecipes from "./Components/MyRecipes/MyRecipes";
+import RecipeList from "./Components/Recipes/RecipeList";
 
 const App: React.FC = () => {
   return (
     <div>
-      <MyRecipes />
+      <RecipeList />
     </div>
   );
 };
