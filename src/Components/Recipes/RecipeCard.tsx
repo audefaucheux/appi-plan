@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Recipe from "../../Constants/Recipe";
+import RecipePreview from "./RecipePreview";
 import placeholderImage from "../../images/placeholder-image.png";
 
 interface RecipeCardProps {
@@ -7,10 +8,13 @@ interface RecipeCardProps {
 }
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
+  const [openPreview, setOpenPreview] = useState<boolean>(false);
+
   return (
-    <div className="recipe-card">
+    <div className="recipe-card" onClick={() => setOpenPreview(true)}>
       <img src={placeholderImage} alt="placeholderImage" />
       <div>{recipe.name}</div>
+      {openPreview && <RecipePreview {...{ recipe, setOpenPreview }} />}
     </div>
   );
 };
