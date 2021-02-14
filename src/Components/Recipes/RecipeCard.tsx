@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Recipe from "../../Constants/Recipe";
+import Recipe from "../../Types/Recipe";
 import RecipePreview from "./RecipePreview";
 import placeholderImage from "../../images/placeholder-image.png";
 
@@ -13,7 +13,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
   return (
     <div className="recipe-card" onClick={() => setOpenPreview(true)}>
       <img src={placeholderImage} alt="placeholderImage" />
-      <div>{recipe.name}</div>
+      <div>{recipe.title}</div>
       {openPreview && <RecipePreview {...{ recipe, setOpenPreview }} />}
     </div>
   );
