@@ -2,19 +2,124 @@
   "recipes": [
     {
       "id": 1,
-      "name": "Recipe 1"
+      "title": "Ham and Cheese Sandwich",
+      "servingSize": 1,
+      "preparationTime": 5,
+      "cookingTime": 2,
+      "ingredients": [
+        {
+          "name": "sourdough bread",
+          "amount": 2,
+          "measurement": "slices",
+          "notes": ""
+        },
+        {
+          "name": "ham",
+          "amount": 1,
+          "measurement": "slice",
+          "notes": ""
+        },
+        {
+          "name": "grated cheddar",
+          "amount": 20,
+          "measurement": "g",
+          "notes": ""
+        },
+        {
+          "name": "butter",
+          "amount": 5,
+          "measurement": "g",
+          "notes": ""
+        }
+      ],
+      "directions": [
+        {
+          "order": 1,
+          "description": "Spread butter on one bread slice, top with ham, cheese and the remaining bread slice"
+        },
+        {
+          "order": 2,
+          "description": "Place in a sandwich press for 2-3 min or until grilled"
+        },
+        {
+          "order": 3,
+          "description": "Once grilled, cut the sandwich in two"
+        }
+      ],
+      "tags": [
+        "lunch",
+        "pork"
+      ],
+      "nutritionalInfo": {
+        "calories": 843,
+        "protein": 34,
+        "carbs": 144,
+        "fat": 15
+      }
     },
     {
       "id": 2,
-      "name": "Recipe 2"
+      "title": "Pasta with Pesto",
+      "servingSize": 1,
+      "preparationTime": 5,
+      "cookingTime": 15,
+      "ingredients": [
+        {
+          "name": "pasta",
+          "amount": 100,
+          "measurement": "g",
+          "notes": ""
+        },
+        {
+          "name": "pesto",
+          "amount": 10,
+          "measurement": "g",
+          "notes": ""
+        },
+        {
+          "name": "grated cheddar",
+          "amount": 20,
+          "measurement": "g",
+          "notes": ""
+        }
+      ],
+      "directions": [
+        {
+          "order": 2,
+          "description": "Once boiling, add the pasta and cook for 10min (or check packaging instructions"
+        },
+        {
+          "order": 1,
+          "description": "Boil some water in a pan"
+        },
+        {
+          "order": 3,
+          "description": "Once cooked, drain and add in a bowl"
+        },
+        {
+          "order": 4,
+          "description": "Add the pesto and cheddar and mix well"
+        }
+      ],
+      "tags": []
     },
     {
       "id": 3,
-      "name": "Recipe 3"
+      "title": "Recipe 3",
+      "ingredients": [],
+      "directions": []
     },
     {
       "id": 4,
-      "name": "Recipe 4"
+      "title": "Recipe 4",
+      "ingredients": [],
+      "directions": []
     }
+  ],
+  "ingredients": [
+    "sourdough bread",
+    "ham",
+    "grated cheddar",
+    "butter"
   ]
 }
