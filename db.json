@@ -32,8 +32,30 @@
           "notes": ""
         }
       ],
-      "directions": [],
-      "tags": []
+      "directions": [
+        {
+          "order": 1,
+          "description": "Spread butter on one bread slice, top with ham, cheese and the remaining bread slice"
+        },
+        {
+          "order": 2,
+          "description": "Place in a sandwich press for 2-3 min or until grilled"
+        },
+        {
+          "order": 3,
+          "description": "Once grilled, cut the sandwich in two"
+        }
+      ],
+      "tags": [
+        "lunch",
+        "pork"
+      ],
+      "nutritionalInfo": {
+        "calories": 843,
+        "protein": 34,
+        "carbs": 144,
+        "fat": 15
+      }
     },
     {
       "id": 2,
@@ -63,12 +85,12 @@
       ],
       "directions": [
         {
-          "order": 1,
-          "description": "Boil some water in a pan"
-        },
-        {
           "order": 2,
           "description": "Once boiling, add the pasta and cook for 10min (or check packaging instructions"
+        },
+        {
+          "order": 1,
+          "description": "Boil some water in a pan"
         },
         {
           "order": 3,
@@ -84,12 +106,14 @@
     {
       "id": 3,
       "title": "Recipe 3",
-      "ingredients": []
+      "ingredients": [],
+      "directions": []
     },
     {
       "id": 4,
       "title": "Recipe 4",
-      "ingredients": []
+      "ingredients": [],
+      "directions": []
     }
   ],
   "ingredients": [

@@ -9,7 +9,7 @@ interface Recipe {
   servingSize: number;
   ingredients: Ingredient[];
   directions: Direction[];
-  nutritionalInfo: NutritionalInfo[];
+  nutritionalInfo: NutritionalInfo;
   notes: string | undefined;
   tags: string[];
 }

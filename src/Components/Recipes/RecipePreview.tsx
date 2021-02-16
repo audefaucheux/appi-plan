@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useRef, useEffect } from "react";
 import Recipe from "../../Types/Recipe";
 import IngredientsList from "./IngredientsList";
 import Directions from "./Directions";
+import NutritionalInformation from "./NutritionalInformation";
 import placeholderImage from "../../images/placeholder-image.png";
 
 interface RecipePreviewProps {
@@ -19,6 +20,7 @@ const RecipePreview: React.FC<RecipePreviewProps> = ({
     cookingTime,
     ingredients,
     directions,
+    nutritionalInfo,
   } = recipe;
 
   const node = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -60,6 +62,9 @@ const RecipePreview: React.FC<RecipePreviewProps> = ({
         <p>Cooking Time: {convertMinutesToHours(cookingTime)}</p>
         <IngredientsList ingredients={ingredients} />
         <Directions directions={directions} />
+        {nutritionalInfo && (
+          <NutritionalInformation nutritionalInfo={nutritionalInfo} />
+        )}
       </div>
     </div>
   );
