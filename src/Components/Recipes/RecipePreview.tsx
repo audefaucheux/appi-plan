@@ -4,7 +4,7 @@ import IngredientsList from "./IngredientsList";
 import Directions from "./Directions";
 import NutritionalInformation from "./NutritionalInformation";
 import placeholderImage from "../../images/placeholder-image.png";
-
+import { Heading, Image } from "@chakra-ui/react";
 interface RecipePreviewProps {
   recipe: Recipe;
   setOpenPreview: Dispatch<SetStateAction<boolean>>;
@@ -55,9 +55,11 @@ const RecipePreview: React.FC<RecipePreviewProps> = ({
         <span className="close" onClick={() => setOpenPreview(false)}>
           &times;
         </span>
-        <p>{title}</p>
+        <Heading as="h4" size="md">
+          {title}
+        </Heading>
 
-        <img src={placeholderImage} alt="placeholderImage" />
+        <Image p={[2]} w="100%" src={placeholderImage} alt="placeholderImage" />
         <p>Preparation Time: {convertMinutesToHours(preparationTime)}</p>
         <p>Cooking Time: {convertMinutesToHours(cookingTime)}</p>
         <IngredientsList ingredients={ingredients} />
