@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Recipe from "../../Types/Recipe";
 import RecipeCard from "./RecipeCard";
-import { Heading, Input, Box } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
-import { getRecipes } from "../../Services/AppiPlanBackend/Recipes";
-import { getIngredients } from "../../Services/AppiPlanBackend/Ingredients";
+import SearchBar from "../Filters/SearchBar";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchInput, setSearchInput] = useState<string>("");
   const [ingredients, setIngredients] = useState<string[]>([]);
+
+  const getRecipes = async () => {
+    try {
+      const recipes = await axios.get("http://localhost:3004/recipes");
+      setRecipes(recipes.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getIngredients = async () => {
+    try {
+      const ingredients = await axios.get("http://localhost:3004/ingredients");
+      setIngredients(ingredients.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -19,29 +35,23 @@ const RecipeList: React.FC = () => {
     recipes.filter(({ title }) => title.toLowerCase().includes(searchInput));
 
   useEffect(() => {
-    getRecipes(setRecipes);
-    getIngredients(setIngredients);
+    getRecipes();
+    getIngredients();
   }, [searchInput]);
 
   return (
-    <Box p={[4]}>
-      <Heading>My Recipes</Heading>
-      <Box width="30%" py={[3]}>
-        <Input
-          id="search-bar"
-          type="text"
-          placeholder="search recipe..."
-          onChange={handleSearchInputChange}
-          value={searchInput}
-          icon={<SearchIcon />}
-        />
-      </Box>
+    <div>
+      <h1>My Recipes</h1>
+      <SearchBar
+        handleInputChange={handleSearchInputChange}
+        searchInput={searchInput}
+      />
       <div className="recipe-list">
         {filterRecipes(recipes).map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />
         ))}
       </div>
-    </Box>
+    </div>
   );
 };
 
