@@ -3,12 +3,16 @@ import axios from "axios";
 import Recipe from "../../Types/Recipe";
 import RecipeCard from "./RecipeCard";
 import SearchBar from "../Filters/SearchBar";
+import RecipeModal from "./RecipeModal";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchInput, setSearchInput] = useState<string>("");
   const [ingredients, setIngredients] = useState<string[]>([]);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | undefined>();
 
+  // TODO : Move to service folder
   const getRecipes = async () => {
     try {
       const recipes = await axios.get("http://localhost:3004/recipes");
@@ -37,7 +41,7 @@ const RecipeList: React.FC = () => {
   useEffect(() => {
     getRecipes();
     getIngredients();
-  }, [searchInput]);
+  }, []);
 
   return (
     <div>
@@ -48,9 +52,17 @@ const RecipeList: React.FC = () => {
       />
       <div className="recipe-list">
         {filterRecipes(recipes).map((recipe, index) => (
-          <RecipeCard key={index} recipe={recipe} />
+          <RecipeCard
+            key={index}
+            recipe={recipe}
+            setOpenModal={setOpenModal}
+            setSelectedRecipe={setSelectedRecipe}
+          />
         ))}
       </div>
+      {openModal && selectedRecipe && (
+        <RecipeModal recipe={selectedRecipe} setOpenModal={setOpenModal} />
+      )}
     </div>
   );
 };

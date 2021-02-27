@@ -9,6 +9,11 @@
   width: 20rem;
 }
 
+.recipe-card:hover,
+.recipe-card:focus {
+  cursor: pointer;
+}
+
 .recipe-card img {
   width: 18rem;
 }
@@ -36,6 +41,10 @@
   width: 80%;
 }
 
+.modal-content img {
+  width: 18rem;
+}
+
 /* The Close Button */
 .close {
   color: #aaa;
@@ -50,6 +59,8 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Search Bar */
 
 #search-bar {
   border: solid;
