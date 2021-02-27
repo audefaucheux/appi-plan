@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Recipe from "../../Types/Recipe";
 import RecipeCard from "./RecipeCard";
 import SearchBar from "../Filters/SearchBar";
 import RecipeModal from "./RecipeModal";
+import { getRecipes, getIngredients } from "../../Services/AppiPlanBackend";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -11,25 +11,6 @@ const RecipeList: React.FC = () => {
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | undefined>();
-
-  // TODO : Move to service folder
-  const getRecipes = async () => {
-    try {
-      const recipes = await axios.get("http://localhost:3004/recipes");
-      setRecipes(recipes.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getIngredients = async () => {
-    try {
-      const ingredients = await axios.get("http://localhost:3004/ingredients");
-      setIngredients(ingredients.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -39,8 +20,8 @@ const RecipeList: React.FC = () => {
     recipes.filter(({ title }) => title.toLowerCase().includes(searchInput));
 
   useEffect(() => {
-    getRecipes();
-    getIngredients();
+    getRecipes(setRecipes);
+    getIngredients(setIngredients);
   }, []);
 
   return (
