@@ -29,7 +29,7 @@ const RecipeList: React.FC = () => {
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => setSearchInput(event.target.value);
+  ) => setSearchInput(event.target.value.toLocaleLowerCase());
 
   const filterRecipes = (recipes: Recipe[]): Recipe[] =>
     recipes.filter(({ title }) => title.toLowerCase().includes(searchInput));
