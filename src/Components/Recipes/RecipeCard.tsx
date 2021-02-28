@@ -17,7 +17,6 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
     <div
       className="recipe-card"
       onClick={() => {
-        console.log("recipe card clicked");
         setOpenModal(true);
         setSelectedRecipe(recipe);
       }}

@@ -4,7 +4,7 @@ import NutritionalInfo from "./NutritionalInfo";
 
 interface Recipe {
   title: string;
-  preparationTime: number | undefined;
+  prepTime: number | undefined;
   cookingTime: number | undefined;
   servingSize: number;
   ingredients: Ingredient[];

@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Ham and Cheese Sandwich",
       "servingSize": 1,
-      "preparationTime": 5,
+      "prepTime": 5,
       "cookingTime": 2,
       "ingredients": [
         {
@@ -61,7 +61,7 @@
       "id": 2,
       "title": "Pasta with Pesto",
       "servingSize": 1,
-      "preparationTime": 5,
+      "prepTime": 5,
       "cookingTime": 15,
       "ingredients": [
         {

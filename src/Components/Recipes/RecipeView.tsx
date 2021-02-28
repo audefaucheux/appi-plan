@@ -12,8 +12,9 @@ interface RecipeViewProps {
 const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
   const {
     title,
-    preparationTime,
+    prepTime,
     cookingTime,
+    servingSize,
     ingredients,
     directions,
     nutritionalInfo,
@@ -22,8 +23,9 @@ const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
     <div>
       <p>{title}</p>
       <img src={placeholderImage} alt="placeholderImage" />
-      <p>Preparation Time: {convertMinutesToHours(preparationTime)}</p>
+      <p>Preparation Time: {convertMinutesToHours(prepTime)}</p>
       <p>Cooking Time: {convertMinutesToHours(cookingTime)}</p>
+      <p>Service Size: {servingSize}</p>
       <IngredientsList ingredients={ingredients} />
       <Directions directions={directions} />
       {nutritionalInfo && (
