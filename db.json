@@ -9,25 +9,25 @@
       "ingredients": [
         {
           "name": "sourdough bread",
-          "amount": 2,
+          "amount": "2",
           "measurement": "slices",
           "notes": ""
         },
         {
           "name": "ham",
-          "amount": 1,
+          "amount": "1",
           "measurement": "slice",
           "notes": ""
         },
         {
           "name": "grated cheddar",
-          "amount": 20,
+          "amount": "20",
           "measurement": "g",
           "notes": ""
         },
         {
           "name": "butter",
-          "amount": 5,
+          "amount": "5",
           "measurement": "g",
           "notes": ""
         }
@@ -66,19 +66,19 @@
       "ingredients": [
         {
           "name": "pasta",
-          "amount": 100,
+          "amount": "100",
           "measurement": "g",
           "notes": ""
         },
         {
           "name": "pesto",
-          "amount": 10,
+          "amount": "10",
           "measurement": "g",
           "notes": ""
         },
         {
           "name": "grated cheddar",
-          "amount": 20,
+          "amount": "20",
           "measurement": "g",
           "notes": ""
         }

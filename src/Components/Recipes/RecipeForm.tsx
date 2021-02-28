@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Recipe from "../../Types/Recipe";
 import Ingredient from "../../Types/Ingredient";
+import Direction from "../../Types/Direction";
 import IngredientsForm from "./IngredientsForm";
-
+import DirectionsForm from "./DirectionsForm";
+//TO DO add index for type
 interface RecipeFormProps {
   recipe: Recipe;
 }
@@ -17,6 +19,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ recipe }) => {
   const [ingredients, setIngredients] = useState<Ingredient[]>(
     recipe.ingredients
   );
+  const [directions, setDirections] = useState<Direction[]>(recipe.directions);
 
   return (
     <form>
@@ -58,11 +61,11 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ recipe }) => {
         required
       />
       <br />
-      <label htmlFor="ingredients">Ingredients: </label>
       <IngredientsForm
         ingredients={ingredients}
         setIngredients={setIngredients}
       />
+      <DirectionsForm directions={directions} setDirections={setDirections} />
       <br />
     </form>
   );

@@ -18,6 +18,8 @@ const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
     ingredients,
     directions,
     nutritionalInfo,
+    notes,
+    tags,
   } = recipe;
   return (
     <div>
@@ -31,6 +33,8 @@ const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
       {nutritionalInfo && (
         <NutritionalInformation nutritionalInfo={nutritionalInfo} />
       )}
+      <p>Notes: {notes}</p>
+      <p>Tags: {tags}</p>
     </div>
   );
 };

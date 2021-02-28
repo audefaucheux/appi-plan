@@ -38,86 +38,88 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
     return !!findEmptyRow;
   };
 
-  const addEmptyRow = (ingredients: Ingredient[]): void => {
-    if (hasEmptyRow(ingredients)) {
-      return;
+  const addEmptyRow = (ingredients: Ingredient[]): Ingredient[] => {
+    if (!hasEmptyRow(ingredients)) {
+      const emptyRow: Ingredient = {
+        name: "",
+        amount: "",
+        measurement: "",
+        notes: "",
+      };
+
+      ingredients.push(emptyRow);
     }
 
-    const emptyRow: Ingredient = {
-      amount: "",
-      measurement: "",
-      name: "",
-      notes: "",
-    };
-
-    ingredients.push(emptyRow);
-    setIngredients(ingredients);
+    return ingredients;
   };
 
-  addEmptyRow(ingredients);
-
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Amount</th>
-          <th>Measurement</th>
-          <th>Name</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        {ingredients.map(({ amount, measurement, name, notes }, index) => (
-          <tr key={index}>
-            <td>
-              <input
-                id={`ingredient-amount-${index}`}
-                type="text"
-                value={amount}
-                onChange={(e) => {
-                  handleIngredientChange(e, "amount", index);
-                }}
-              />
-            </td>
-            <td>
-              <input
-                id={`ingredient-measurement-${index}`}
-                type="text"
-                value={measurement}
-                onChange={(e) => {
-                  handleIngredientChange(e, "measurement", index);
-                }}
-              />
-            </td>
-            <td>
-              <input
-                id={`ingredient-name-${index}`}
-                type="text"
-                value={name}
-                onChange={(e) => {
-                  handleIngredientChange(e, "name", index);
-                }}
-              />
-            </td>
-            <td>
-              <input
-                id={`ingredient-notes-${index}`}
-                type="text"
-                value={notes}
-                onChange={(e) => {
-                  handleIngredientChange(e, "notes", index);
-                }}
-              />
-            </td>
-            <td>
-              <button onClick={(e) => handleDeleteIngredient(e, index)}>
-                delete
-              </button>
-            </td>
+    <div>
+      <h3>Ingredients:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Measurement</th>
+            <th>Name</th>
+            <th>Notes</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {addEmptyRow(ingredients).map(
+            ({ amount, measurement, name, notes }, index) => (
+              <tr key={index}>
+                <td>
+                  <input
+                    id={`ingredient-amount-${index}`}
+                    type="text"
+                    value={amount}
+                    onChange={(e) => {
+                      handleIngredientChange(e, "amount", index);
+                    }}
+                  />
+                </td>
+                <td>
+                  <input
+                    id={`ingredient-measurement-${index}`}
+                    type="text"
+                    value={measurement}
+                    onChange={(e) => {
+                      handleIngredientChange(e, "measurement", index);
+                    }}
+                  />
+                </td>
+                <td>
+                  <input
+                    id={`ingredient-name-${index}`}
+                    type="text"
+                    value={name}
+                    onChange={(e) => {
+                      handleIngredientChange(e, "name", index);
+                    }}
+                  />
+                </td>
+                <td>
+                  <input
+                    id={`ingredient-notes-${index}`}
+                    type="text"
+                    value={notes}
+                    onChange={(e) => {
+                      handleIngredientChange(e, "notes", index);
+                    }}
+                  />
+                </td>
+                <td>
+                  <button onClick={(e) => handleDeleteIngredient(e, index)}>
+                    delete
+                  </button>
+                </td>
+              </tr>
+            )
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
