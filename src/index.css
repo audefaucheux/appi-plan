@@ -65,3 +65,19 @@
 #search-bar {
   border: solid;
 }
+
+table,
+td,
+th {
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}

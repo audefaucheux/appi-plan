@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import Recipe from "../../Types/Recipe";
 import RecipeView from "./RecipeView";
+import RecipeForm from "./RecipeForm";
 
 interface RecipeModalProps {
   recipe: Recipe;
@@ -38,7 +39,11 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, setOpenModal }) => {
         <span className="close" onClick={() => setOpenModal(false)}>
           &times;
         </span>
-        {editMode ? "edit mode" : <RecipeView recipe={recipe} />}
+        {editMode ? (
+          <RecipeForm recipe={recipe} />
+        ) : (
+          <RecipeView recipe={recipe} />
+        )}
       </div>
     </div>
   );
