@@ -1,20 +1,19 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useRef,
-  useEffect,
-  useState,
-} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Recipe from "../../Types/Recipe";
 import RecipeView from "./RecipeView";
 import RecipeForm from "./RecipeForm";
 
 interface RecipeModalProps {
   recipe: Recipe;
-  setOpenModal: Dispatch<SetStateAction<boolean>>;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  handleSaveRecipe: (recipe: Recipe) => void;
 }
 
-const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, setOpenModal }) => {
+const RecipeModal: React.FC<RecipeModalProps> = ({
+  recipe,
+  setOpenModal,
+  handleSaveRecipe,
+}) => {
   const [editMode, setEditMode] = useState<boolean>(false);
 
   const node = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -40,7 +39,11 @@ const RecipeModal: React.FC<RecipeModalProps> = ({ recipe, setOpenModal }) => {
           &times;
         </span>
         {editMode ? (
-          <RecipeForm recipe={recipe} />
+          <RecipeForm
+            recipe={recipe}
+            handleSaveRecipe={handleSaveRecipe}
+            setEditMode={setEditMode}
+          />
         ) : (
           <RecipeView recipe={recipe} />
         )}

@@ -15,6 +15,7 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
     field: keyof Ingredient,
     index: number
   ) => {
+    // TO DO: handle empty rows
     const clonedIngredients = JSON.parse(JSON.stringify(ingredients));
     const ingredient = clonedIngredients[index];
     ingredient[field] = event.target.value;

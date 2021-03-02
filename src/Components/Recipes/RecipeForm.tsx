@@ -4,12 +4,19 @@ import Ingredient from "../../Types/Ingredient";
 import Direction from "../../Types/Direction";
 import IngredientsForm from "./IngredientsForm";
 import DirectionsForm from "./DirectionsForm";
+
 //TO DO add index for type
 interface RecipeFormProps {
   recipe: Recipe;
+  handleSaveRecipe: (recipe: Recipe) => void;
+  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const RecipeForm: React.FC<RecipeFormProps> = ({ recipe }) => {
+const RecipeForm: React.FC<RecipeFormProps> = ({
+  recipe,
+  handleSaveRecipe,
+  setEditMode,
+}) => {
   const [title, setTitle] = useState<string>(recipe.title);
   const [prepTime, setPrepTime] = useState<number | undefined>(recipe.prepTime);
   const [cookingTime, setCookingTime] = useState<number | undefined>(
@@ -20,6 +27,24 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ recipe }) => {
     recipe.ingredients
   );
   const [directions, setDirections] = useState<Direction[]>(recipe.directions);
+  const [notes, setNotes] = useState<string | undefined>(recipe.notes);
+
+  const handleSaveClick = (
+    event: React.MouseEvent<HTMLInputElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    handleSaveRecipe({
+      ...recipe,
+      title,
+      prepTime,
+      cookingTime,
+      servingSize,
+      ingredients,
+      directions,
+      notes,
+    });
+    setEditMode(false);
+  };
 
   return (
     <form>
@@ -66,7 +91,15 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ recipe }) => {
         setIngredients={setIngredients}
       />
       <DirectionsForm directions={directions} setDirections={setDirections} />
-      <br />
+      <h3>Notes: </h3>
+      <textarea
+        id="notes"
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+        required
+      />
+      <h3>Tags</h3>
+      <input type="submit" value="Save" onClick={handleSaveClick} />
     </form>
   );
 };

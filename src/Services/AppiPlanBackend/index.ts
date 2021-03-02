@@ -1,2 +1,2 @@
-export { getRecipes } from "./recipeApi";
+export { getRecipes, updateRecipe } from "./recipeApi";
 export { getIngredients } from "./ingredientApi";

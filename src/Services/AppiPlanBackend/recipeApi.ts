@@ -12,3 +12,11 @@ export const getRecipes = async (
     console.log(error);
   }
 };
+
+export const updateRecipe = async (recipe: Recipe): Promise<void> => {
+  try {
+    await axios.patch(`http://localhost:3004/recipes/${recipe.id}`, recipe);
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -4,6 +4,7 @@ import RecipeCard from "./RecipeCard";
 import SearchBar from "../Filters/SearchBar";
 import RecipeModal from "./RecipeModal";
 import { getRecipes, getIngredients } from "../../Services/AppiPlanBackend";
+import { updateRecipe } from "../../Services/AppiPlanBackend";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -19,10 +20,16 @@ const RecipeList: React.FC = () => {
   const filterRecipes = (recipes: Recipe[]): Recipe[] =>
     recipes.filter(({ title }) => title.toLowerCase().includes(searchInput));
 
+  const handleSaveRecipe = (updatedRecipe: Recipe): void => {
+    console.log(updatedRecipe);
+    setSelectedRecipe(updatedRecipe);
+    updateRecipe(updatedRecipe);
+  };
+
   useEffect(() => {
     getRecipes(setRecipes);
     getIngredients(setIngredients);
-  }, []);
+  }, [selectedRecipe]);
 
   return (
     <div>
@@ -42,7 +49,11 @@ const RecipeList: React.FC = () => {
         ))}
       </div>
       {openModal && selectedRecipe && (
-        <RecipeModal recipe={selectedRecipe} setOpenModal={setOpenModal} />
+        <RecipeModal
+          recipe={selectedRecipe}
+          handleSaveRecipe={handleSaveRecipe}
+          setOpenModal={setOpenModal}
+        />
       )}
     </div>
   );

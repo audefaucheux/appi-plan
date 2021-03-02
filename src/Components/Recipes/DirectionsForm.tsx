@@ -20,6 +20,7 @@ const DirectionsForm: React.FC<DirectionsFormProps> = ({
     event: React.ChangeEvent<HTMLTextAreaElement>,
     index: number
   ) => {
+    // TO DO: handle empty rows
     const clonedDirections = JSON.parse(JSON.stringify(directions));
     clonedDirections[index].description = event.target.value;
     setDirections(clonedDirections);
