@@ -21,7 +21,6 @@ const RecipeList: React.FC = () => {
     recipes.filter(({ title }) => title.toLowerCase().includes(searchInput));
 
   const handleSaveRecipe = (updatedRecipe: Recipe): void => {
-    console.log(updatedRecipe);
     setSelectedRecipe(updatedRecipe);
     updateRecipe(updatedRecipe);
   };

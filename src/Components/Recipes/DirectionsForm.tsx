@@ -1,4 +1,5 @@
 import React from "react";
+import { cloneDeep, identity, some } from "lodash";
 import Direction from "../../Types/Direction";
 
 interface DirectionsFormProps {
@@ -16,14 +17,17 @@ const DirectionsForm: React.FC<DirectionsFormProps> = ({
       order: index + 1,
     }));
 
+  const removeEmptyRows = (directions: Direction[]): Direction[] =>
+    directions.filter((direction) => some(direction, identity));
+
   const handleDesciptionChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>,
     index: number
   ) => {
-    // TO DO: handle empty rows
-    const clonedDirections = JSON.parse(JSON.stringify(directions));
+    const clonedDirections = cloneDeep(directions);
     clonedDirections[index].description = event.target.value;
-    setDirections(clonedDirections);
+    const directionsNoEmptyRows = removeEmptyRows(clonedDirections);
+    setDirections(directionsNoEmptyRows);
   };
 
   const handleDeleteDirection = (
@@ -31,7 +35,7 @@ const DirectionsForm: React.FC<DirectionsFormProps> = ({
     index: number
   ) => {
     event.preventDefault();
-    const clonedDirections = JSON.parse(JSON.stringify(directions));
+    const clonedDirections = cloneDeep(directions);
     clonedDirections.splice(index, 1);
     const reorderedDirections = reassignDirectionsOrder(clonedDirections);
     setDirections(reorderedDirections);

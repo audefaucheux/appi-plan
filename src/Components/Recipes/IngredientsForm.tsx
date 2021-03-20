@@ -1,4 +1,5 @@
 import React from "react";
+import { cloneDeep, some, identity } from "lodash";
 import Ingredient from "../../Types/Ingredient";
 
 interface IngredientsFormProps {
@@ -10,16 +11,18 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
   ingredients,
   setIngredients,
 }) => {
+  const removeEmptyRows = (ingredients: Ingredient[]): Ingredient[] =>
+    ingredients.filter((ingredient) => some(ingredient, identity));
+
   const handleIngredientChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     field: keyof Ingredient,
     index: number
   ) => {
-    // TO DO: handle empty rows
-    const clonedIngredients = JSON.parse(JSON.stringify(ingredients));
-    const ingredient = clonedIngredients[index];
-    ingredient[field] = event.target.value;
-    setIngredients(clonedIngredients);
+    const clonedIngredients = cloneDeep(ingredients);
+    clonedIngredients[index][field] = event.target.value;
+    const ingredientsNoEmptyRows = removeEmptyRows(clonedIngredients);
+    setIngredients(ingredientsNoEmptyRows);
   };
 
   const handleDeleteIngredient = (
@@ -27,14 +30,14 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
     index: number
   ) => {
     event.preventDefault();
-    const clonedIngredients = JSON.parse(JSON.stringify(ingredients));
+    const clonedIngredients = cloneDeep(ingredients);
     clonedIngredients.splice(index, 1);
     setIngredients(clonedIngredients);
   };
 
   const hasEmptyRow = (ingredients: Ingredient[]): boolean => {
-    const findEmptyRow = ingredients.find((ingredient) =>
-      Object.values(ingredient).every((value) => value === "")
+    const findEmptyRow = ingredients.find(
+      (ingredient) => !some(ingredient, identity)
     );
     return !!findEmptyRow;
   };
