@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import Recipe from "../../Types/Recipe";
-import Ingredient from "../../Types/Ingredient";
-import Direction from "../../Types/Direction";
+import Recipe from "Types/Recipe";
+import Ingredient from "Types/Ingredient";
+import Direction from "Types/Direction";
 import IngredientsForm from "./IngredientsForm";
 import DirectionsForm from "./DirectionsForm";
 
-//TO DO add index for type
 interface RecipeFormProps {
   recipe: Recipe;
   handleSaveRecipe: (recipe: Recipe) => void;

@@ -1,5 +1,5 @@
 import React from "react";
-import Direction from "../../Types/Direction";
+import Direction from "Types/Direction";
 
 interface DirectionProps {
   directions: Direction[];

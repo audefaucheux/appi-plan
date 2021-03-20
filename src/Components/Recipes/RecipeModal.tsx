@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import Recipe from "../../Types/Recipe";
+import Recipe from "Types/Recipe";
 import RecipeView from "./RecipeView";
 import RecipeForm from "./RecipeForm";
 

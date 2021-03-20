@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Recipe from "../../Types/Recipe";
+import Recipe from "Types/Recipe";
 import RecipeCard from "./RecipeCard";
 import SearchBar from "../Filters/SearchBar";
 import RecipeModal from "./RecipeModal";
-import { getRecipes, getIngredients } from "../../Services/AppiPlanBackend";
-import { updateRecipe } from "../../Services/AppiPlanBackend";
+import { getRecipes, getIngredients } from "Services/AppiPlanBackend";
+import { updateRecipe } from "Services/AppiPlanBackend";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);

@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
-import Recipe from "../../Types/Recipe";
-import placeholderImage from "../../images/placeholder-image.png";
+import Recipe from "Types/Recipe";
+import placeholderImage from "images/placeholder-image.png";
 
 interface RecipeCardProps {
   recipe: Recipe;
