@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Recipe from "Types/Recipe";
 import Ingredient from "Types/Ingredient";
 import Direction from "Types/Direction";
-import IngredientsForm from "./IngredientsForm";
+import IngredientsForm from "./Ingredients/IngredientsForm";
 import DirectionsForm from "./DirectionsForm";
 
 interface RecipeFormProps {
