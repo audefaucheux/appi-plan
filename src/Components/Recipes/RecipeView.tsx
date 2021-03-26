@@ -3,7 +3,7 @@ import Recipe from "Types/Recipe";
 import { convertMinutesToHours } from "Helpers/convertTime";
 import placeholderImage from "images/placeholder-image.png";
 import IngredientsList from "./Ingredients/IngredientsList";
-import Directions from "./Directions";
+import DirectionsList from "./Directions/DirectionsList";
 import NutritionalInformation from "./NutritionalInformation";
 
 interface RecipeViewProps {
@@ -29,7 +29,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
       <p>Cooking Time: {convertMinutesToHours(cookingTime)}</p>
       <p>Service Size: {servingSize}</p>
       <IngredientsList ingredients={ingredients} />
-      <Directions directions={directions} />
+      <DirectionsList directions={directions} />
       {nutritionalInfo && (
         <NutritionalInformation nutritionalInfo={nutritionalInfo} />
       )}

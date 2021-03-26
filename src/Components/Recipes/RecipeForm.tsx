@@ -3,7 +3,7 @@ import Recipe from "Types/Recipe";
 import Ingredient from "Types/Ingredient";
 import Direction from "Types/Direction";
 import IngredientsForm from "./Ingredients/IngredientsForm";
-import DirectionsForm from "./DirectionsForm";
+import DirectionsForm from "./Directions/DirectionsForm";
 
 interface RecipeFormProps {
   recipe: Recipe;
