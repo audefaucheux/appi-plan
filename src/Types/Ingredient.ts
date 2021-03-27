@@ -1,6 +1,6 @@
 interface Ingredient {
   name: string;
-  amount: number;
+  amount: string;
   measurement: string;
   notes: string;
 }

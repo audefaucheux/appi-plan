@@ -1,11 +1,11 @@
 import React from "react";
-import Direction from "../../Types/Direction";
+import Direction from "Types/Direction";
 
-interface DirectionProps {
+interface DirectionsListProps {
   directions: Direction[];
 }
 
-const Directions: React.FC<DirectionProps> = ({ directions }) => {
+const DirectionsList: React.FC<DirectionsListProps> = ({ directions }) => {
   const orderDirections = (directions: Direction[]): Direction[] =>
     directions.sort((a, b) => a.order - b.order);
 
@@ -21,4 +21,4 @@ const Directions: React.FC<DirectionProps> = ({ directions }) => {
   );
 };
 
-export default Directions;
+export default DirectionsList;

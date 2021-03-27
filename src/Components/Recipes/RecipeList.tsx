@@ -1,31 +1,17 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Recipe from "../../Types/Recipe";
+import Recipe from "Types/Recipe";
 import RecipeCard from "./RecipeCard";
 import SearchBar from "../Filters/SearchBar";
+import RecipeModal from "./RecipeModal";
+import { getRecipes, getIngredients } from "Services/AppiPlanBackend";
+import { updateRecipe } from "Services/AppiPlanBackend";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchInput, setSearchInput] = useState<string>("");
   const [ingredients, setIngredients] = useState<string[]>([]);
-
-  const getRecipes = async () => {
-    try {
-      const recipes = await axios.get("http://localhost:3004/recipes");
-      setRecipes(recipes.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getIngredients = async () => {
-    try {
-      const ingredients = await axios.get("http://localhost:3004/ingredients");
-      setIngredients(ingredients.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | undefined>();
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -34,10 +20,15 @@ const RecipeList: React.FC = () => {
   const filterRecipes = (recipes: Recipe[]): Recipe[] =>
     recipes.filter(({ title }) => title.toLowerCase().includes(searchInput));
 
+  const handleSaveRecipe = (updatedRecipe: Recipe): void => {
+    setSelectedRecipe(updatedRecipe);
+    updateRecipe(updatedRecipe);
+  };
+
   useEffect(() => {
-    getRecipes();
-    getIngredients();
-  }, [searchInput]);
+    getRecipes(setRecipes);
+    getIngredients(setIngredients);
+  }, [selectedRecipe]);
 
   return (
     <div>
@@ -48,9 +39,21 @@ const RecipeList: React.FC = () => {
       />
       <div className="recipe-list">
         {filterRecipes(recipes).map((recipe, index) => (
-          <RecipeCard key={index} recipe={recipe} />
+          <RecipeCard
+            key={index}
+            recipe={recipe}
+            setOpenModal={setOpenModal}
+            setSelectedRecipe={setSelectedRecipe}
+          />
         ))}
       </div>
+      {openModal && selectedRecipe && (
+        <RecipeModal
+          recipe={selectedRecipe}
+          handleSaveRecipe={handleSaveRecipe}
+          setOpenModal={setOpenModal}
+        />
+      )}
     </div>
   );
 };

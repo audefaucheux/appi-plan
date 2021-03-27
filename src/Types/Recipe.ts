@@ -3,8 +3,9 @@ import Direction from "./Direction";
 import NutritionalInfo from "./NutritionalInfo";
 
 interface Recipe {
+  id: string;
   title: string;
-  preparationTime: number | undefined;
+  prepTime: number | undefined;
   cookingTime: number | undefined;
   servingSize: number;
   ingredients: Ingredient[];

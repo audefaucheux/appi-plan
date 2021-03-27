@@ -1,7 +1,7 @@
 interface Direction {
   order: number;
   description: string;
-  group: number;
+  group?: number;
 }
 
 export default Direction;
