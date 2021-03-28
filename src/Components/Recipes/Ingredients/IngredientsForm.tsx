@@ -14,9 +14,7 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
 }) => {
   const emptyIngredientRow: Ingredient = {
     name: "",
-    amount: "",
-    measurement: "",
-    notes: "",
+    quantity: "",
   };
 
   const handleIngredientChange = (
@@ -48,10 +46,8 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
       <table>
         <thead>
           <tr>
-            <th>Amount</th>
-            <th>Measurement</th>
+            <th>Quantity</th>
             <th>Name</th>
-            <th>Notes</th>
           </tr>
         </thead>
         <tbody>

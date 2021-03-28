@@ -21,27 +21,17 @@ const IngredientRow: React.FC<IngredientsFormProps> = ({
   handleIngredientChange,
   handleIngredientDelete,
 }) => {
-  const { name, amount, measurement, notes } = ingredient;
+  const { name, quantity } = ingredient;
 
   return (
     <tr key={index}>
       <td>
         <input
-          id={`ingredient-amount-${index}`}
+          id={`ingredient-quantity-${index}`}
           type="text"
-          value={amount}
+          value={quantity}
           onChange={(e) => {
-            handleIngredientChange(e, "amount", index);
-          }}
-        />
-      </td>
-      <td>
-        <input
-          id={`ingredient-measurement-${index}`}
-          type="text"
-          value={measurement}
-          onChange={(e) => {
-            handleIngredientChange(e, "measurement", index);
+            handleIngredientChange(e, "quantity", index);
           }}
         />
       </td>
@@ -52,16 +42,6 @@ const IngredientRow: React.FC<IngredientsFormProps> = ({
           value={name}
           onChange={(e) => {
             handleIngredientChange(e, "name", index);
-          }}
-        />
-      </td>
-      <td>
-        <input
-          id={`ingredient-notes-${index}`}
-          type="text"
-          value={notes}
-          onChange={(e) => {
-            handleIngredientChange(e, "notes", index);
           }}
         />
       </td>
