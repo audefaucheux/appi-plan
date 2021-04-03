@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Recipe from "Types/Recipe";
+import Tag from "./Tag";
 import placeholderImage from "images/placeholder-image.jpg";
 import "./styles/RecipeCard.css";
 
@@ -14,6 +15,8 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
   setOpenModal,
   setSelectedRecipe,
 }) => {
+  const { title, tags } = recipe;
+
   return (
     <div
       id="recipe-card"
@@ -25,7 +28,12 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
       <div id="recipe-card-image">
         <img src={placeholderImage} alt="placeholderImage" />
       </div>
-      <div id="recipe-card-text">{recipe.title}</div>
+      <div id="recipe-card-description">
+        {title}
+        <div className="tag-list">
+          {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+        </div>
+      </div>
     </div>
   );
 };

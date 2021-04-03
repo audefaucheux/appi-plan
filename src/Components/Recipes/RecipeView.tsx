@@ -5,6 +5,7 @@ import placeholderImage from "images/placeholder-image.jpg";
 import IngredientsList from "./Ingredients/IngredientsList";
 import DirectionsList from "./Directions/DirectionsList";
 import NutritionalInformation from "./NutritionalInformation";
+import Tag from "./Tag";
 import "./styles/RecipeView.css";
 
 interface RecipeViewProps {
@@ -39,7 +40,9 @@ const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
       <IngredientsList ingredients={ingredients} />
       <DirectionsList directions={directions} />
       <p>Notes: {notes}</p>
-      <p>Tags: {tags}</p>
+      <div className="tag-list">
+        Tags: {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+      </div>
     </div>
   );
 };
