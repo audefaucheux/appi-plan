@@ -1,7 +1,7 @@
 import React from "react";
 import Recipe from "Types/Recipe";
 import { convertMinutesToHours } from "Helpers/convertTime";
-import placeholderImage from "images/placeholder-image.png";
+import placeholderImage from "images/placeholder-image.jpg";
 import IngredientsList from "./Ingredients/IngredientsList";
 import DirectionsList from "./Directions/DirectionsList";
 import NutritionalInformation from "./NutritionalInformation";

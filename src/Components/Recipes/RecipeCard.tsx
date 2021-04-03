@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Recipe from "Types/Recipe";
-import placeholderImage from "images/placeholder-image.png";
+import placeholderImage from "images/placeholder-image.jpg";
+import "./styles/RecipeCard.css";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -21,8 +22,10 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
         setSelectedRecipe(recipe);
       }}
     >
-      <img src={placeholderImage} alt="placeholderImage" />
-      <div>{recipe.title}</div>
+      <div className="recipe-card-image">
+        <img src={placeholderImage} alt="placeholderImage" />
+      </div>
+      <div className="recipe-card-text">{recipe.title}</div>
     </div>
   );
 };

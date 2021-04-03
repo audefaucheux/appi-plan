@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Recipe from "Types/Recipe";
-import RecipeCard from "./RecipeCard";
+import RecipeCard from "Components/Recipes/RecipeCard";
 import SearchBar from "../Filters/SearchBar";
 import RecipeModal from "./RecipeModal";
-import { getRecipes, getIngredients } from "Services/AppiPlanBackend";
+import { getRecipes } from "Services/AppiPlanBackend";
 import { updateRecipe } from "Services/AppiPlanBackend";
+import "./styles/RecipeList.css";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchInput, setSearchInput] = useState<string>("");
-  const [ingredients, setIngredients] = useState<string[]>([]);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | undefined>();
 
@@ -27,17 +27,19 @@ const RecipeList: React.FC = () => {
 
   useEffect(() => {
     getRecipes(setRecipes);
-    getIngredients(setIngredients);
   }, [selectedRecipe]);
 
   return (
     <div>
       <h1>My Recipes</h1>
-      <SearchBar
-        handleInputChange={handleSearchInputChange}
-        searchInput={searchInput}
-      />
-      <div className="recipe-list">
+      <div id="recipe-filters">
+        <div className="search-label">Search: </div>
+        <SearchBar
+          handleInputChange={handleSearchInputChange}
+          searchInput={searchInput}
+        />
+      </div>
+      <div id="recipe-list">
         {filterRecipes(recipes).map((recipe, index) => (
           <RecipeCard
             key={index}

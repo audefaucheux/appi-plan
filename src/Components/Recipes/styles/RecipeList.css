@@ -1,0 +1,13 @@
+h1 {
+  text-align: center;
+}
+
+#recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#recipe-filters {
+  display: flex;
+  padding: 1rem 0;
+}
