@@ -11,7 +11,7 @@ const NutritionalInformation: React.FC<NutritionalInfoProps> = ({
   const { calories, protein, carbs, fat } = nutritionalInfo;
   return (
     <div>
-      <h3>Nutritional Information (per serving)</h3>
+      <p>Nutritional Information (per serving)</p>
       <div>Calories: {calories}</div>
       <div>Protein: {protein}</div>
       <div>Carbs: {carbs}</div>
