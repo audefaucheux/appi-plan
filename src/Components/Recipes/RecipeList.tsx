@@ -33,7 +33,7 @@ const RecipeList: React.FC = () => {
     <div>
       <h1>My Recipes</h1>
       <div id="recipe-filters">
-        <div className="search-label">Search: </div>
+        <div id="search-label">Search: </div>
         <SearchBar
           handleInputChange={handleSearchInputChange}
           searchInput={searchInput}

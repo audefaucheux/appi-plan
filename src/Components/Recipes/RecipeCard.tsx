@@ -16,16 +16,16 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
 }) => {
   return (
     <div
-      className="recipe-card"
+      id="recipe-card"
       onClick={() => {
         setOpenModal(true);
         setSelectedRecipe(recipe);
       }}
     >
-      <div className="recipe-card-image">
+      <div id="recipe-card-image">
         <img src={placeholderImage} alt="placeholderImage" />
       </div>
-      <div className="recipe-card-text">{recipe.title}</div>
+      <div id="recipe-card-text">{recipe.title}</div>
     </div>
   );
 };
