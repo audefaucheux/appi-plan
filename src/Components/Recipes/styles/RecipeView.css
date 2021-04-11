@@ -1,8 +1,8 @@
-#recipe-header {
+.recipe-header {
   display: flex;
 }
 
-#recipe-header > img {
+.recipe-header > img {
   margin: 1rem;
   object-fit: cover;
   width: 300px;

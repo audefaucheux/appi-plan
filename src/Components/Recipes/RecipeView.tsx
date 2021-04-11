@@ -25,7 +25,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
   } = recipe;
   return (
     <div id="recipe-view">
-      <div id="recipe-header">
+      <div className="recipe-header">
         <img src={placeholderImage} alt="placeholderImage" />
         <div>
           <h2>{title}</h2>
