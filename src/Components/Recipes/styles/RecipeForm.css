@@ -9,3 +9,15 @@
   padding: 10px 5px;
   margin: 0.5rem 0 1rem;
 }
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  border: solid white;
+}
+
+.delete-icon:hover,
+.delete-icon:focus {
+  border: solid grey;
+  cursor: pointer;
+}

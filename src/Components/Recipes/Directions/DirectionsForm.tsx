@@ -35,11 +35,7 @@ const DirectionsForm: React.FC<DirectionsFormProps> = ({
     setDirections(clonedDirections);
   };
 
-  const handleDeleteDirection = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    index: number
-  ) => {
-    event.preventDefault();
+  const handleDeleteDirection = (index: number) => {
     const clonedDirections = cloneDeep(directions);
     clonedDirections.splice(index, 1);
     const reorderedDirections = reassignDirectionsOrder(clonedDirections);

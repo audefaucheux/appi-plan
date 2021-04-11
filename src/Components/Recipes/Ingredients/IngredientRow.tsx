@@ -1,5 +1,6 @@
 import React from "react";
 import Ingredient from "Types/Ingredient";
+import deleteIcon from "images/delete-icon.png";
 
 interface IngredientsFormProps {
   index: number;
@@ -9,10 +10,7 @@ interface IngredientsFormProps {
     field: keyof Ingredient,
     index: number
   ) => void;
-  handleIngredientDelete: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    index: number
-  ) => void;
+  handleIngredientDelete: (index: number) => void;
 }
 
 const IngredientRow: React.FC<IngredientsFormProps> = ({
@@ -46,9 +44,12 @@ const IngredientRow: React.FC<IngredientsFormProps> = ({
         />
       </td>
       <td>
-        <button onClick={(e) => handleIngredientDelete(e, index)}>
-          delete
-        </button>
+        <img
+          src={deleteIcon}
+          alt="delete"
+          className="delete-icon"
+          onClick={() => handleIngredientDelete(index)}
+        />
       </td>
     </tr>
   );
