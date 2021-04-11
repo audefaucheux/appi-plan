@@ -4,6 +4,7 @@ import Ingredient from "Types/Ingredient";
 import Direction from "Types/Direction";
 import IngredientsForm from "./Ingredients/IngredientsForm";
 import DirectionsForm from "./Directions/DirectionsForm";
+import Tag from "./Tag";
 import placeholderImage from "images/placeholder-image.jpg";
 import "./styles/RecipeForm.css";
 
@@ -99,6 +100,11 @@ const RecipeForm: React.FC<RecipeFormProps> = ({
         required
       />
       <h3>Tags</h3>
+      <div className="tag-list">
+        {recipe.tags &&
+          recipe.tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+      </div>
+      <br />
       <input type="submit" value="Save" onClick={handleSaveClick} />
     </form>
   );

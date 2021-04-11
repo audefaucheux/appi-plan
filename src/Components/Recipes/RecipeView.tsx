@@ -39,9 +39,11 @@ const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
       </div>
       <IngredientsList ingredients={ingredients} />
       <DirectionsList directions={directions} />
-      <p>Notes: {notes}</p>
+      <h3>Notes</h3>
+      <p>{notes}</p>
+      <h3>Tags</h3>
       <div className="tag-list">
-        Tags: {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+        {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
       </div>
     </div>
   );

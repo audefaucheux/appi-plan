@@ -47,7 +47,8 @@
         "protein": 34,
         "carbs": 144,
         "fat": 15
-      }
+      },
+      "notes": "Some notes..."
     },
     {
       "id": "2",

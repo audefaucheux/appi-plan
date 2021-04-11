@@ -21,3 +21,7 @@
   border: solid grey;
   cursor: pointer;
 }
+
+#notes {
+  width: 100%;
+}
