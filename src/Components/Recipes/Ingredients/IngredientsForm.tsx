@@ -30,11 +30,7 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
     setIngredients(clonedIngredients);
   };
 
-  const handleIngredientDelete = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    index: number
-  ) => {
-    event.preventDefault();
+  const handleIngredientDelete = (index: number) => {
     const clonedIngredients = cloneDeep(ingredients);
     clonedIngredients.splice(index, 1);
     setIngredients(clonedIngredients);
@@ -48,6 +44,7 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
           <tr>
             <th>Quantity</th>
             <th>Name</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
