@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+}
+
+#search-label {
+  font-size: 17px;
+  padding: 0.5rem;
+}
+
+#recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#recipe-filters {
+  display: flex;
+  padding: 1rem 0;
+}

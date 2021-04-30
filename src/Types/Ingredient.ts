@@ -1,8 +1,6 @@
 interface Ingredient {
   name: string;
-  amount: string;
-  measurement: string;
-  notes: string;
+  quantity: string;
 }
 
 export default Ingredient;

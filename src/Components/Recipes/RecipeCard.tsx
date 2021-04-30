@@ -1,6 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Recipe from "Types/Recipe";
-import placeholderImage from "images/placeholder-image.png";
+import Tag from "./Tag";
+import placeholderImage from "images/placeholder-image.jpg";
+import "./styles/RecipeCard.css";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -13,16 +15,25 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
   setOpenModal,
   setSelectedRecipe,
 }) => {
+  const { title, tags } = recipe;
+
   return (
     <div
-      className="recipe-card"
+      id="recipe-card"
       onClick={() => {
         setOpenModal(true);
         setSelectedRecipe(recipe);
       }}
     >
-      <img src={placeholderImage} alt="placeholderImage" />
-      <div>{recipe.title}</div>
+      <div id="recipe-card-image">
+        <img src={placeholderImage} alt="placeholderImage" />
+      </div>
+      <div id="recipe-card-description">
+        {title}
+        <div className="tag-list">
+          {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+        </div>
+      </div>
     </div>
   );
 };

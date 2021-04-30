@@ -1,5 +1,6 @@
 import React from "react";
 import Ingredient from "Types/Ingredient";
+import deleteIcon from "images/delete-icon.png";
 
 interface IngredientsFormProps {
   index: number;
@@ -9,10 +10,7 @@ interface IngredientsFormProps {
     field: keyof Ingredient,
     index: number
   ) => void;
-  handleIngredientDelete: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    index: number
-  ) => void;
+  handleIngredientDelete: (index: number) => void;
 }
 
 const IngredientRow: React.FC<IngredientsFormProps> = ({
@@ -21,27 +19,17 @@ const IngredientRow: React.FC<IngredientsFormProps> = ({
   handleIngredientChange,
   handleIngredientDelete,
 }) => {
-  const { name, amount, measurement, notes } = ingredient;
+  const { name, quantity } = ingredient;
 
   return (
     <tr key={index}>
       <td>
         <input
-          id={`ingredient-amount-${index}`}
+          id={`ingredient-quantity-${index}`}
           type="text"
-          value={amount}
+          value={quantity}
           onChange={(e) => {
-            handleIngredientChange(e, "amount", index);
-          }}
-        />
-      </td>
-      <td>
-        <input
-          id={`ingredient-measurement-${index}`}
-          type="text"
-          value={measurement}
-          onChange={(e) => {
-            handleIngredientChange(e, "measurement", index);
+            handleIngredientChange(e, "quantity", index);
           }}
         />
       </td>
@@ -56,19 +44,12 @@ const IngredientRow: React.FC<IngredientsFormProps> = ({
         />
       </td>
       <td>
-        <input
-          id={`ingredient-notes-${index}`}
-          type="text"
-          value={notes}
-          onChange={(e) => {
-            handleIngredientChange(e, "notes", index);
-          }}
+        <img
+          src={deleteIcon}
+          alt="delete"
+          className="delete-icon"
+          onClick={() => handleIngredientDelete(index)}
         />
-      </td>
-      <td>
-        <button onClick={(e) => handleIngredientDelete(e, index)}>
-          delete
-        </button>
       </td>
     </tr>
   );

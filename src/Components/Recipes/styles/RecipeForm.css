@@ -1,0 +1,27 @@
+.recipe-info {
+  margin: 1rem;
+  width: 100%;
+}
+
+.recipe-info input {
+  width: 100%;
+  height: 10px;
+  padding: 10px 5px;
+  margin: 0.5rem 0 1rem;
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  border: solid white;
+}
+
+.delete-icon:hover,
+.delete-icon:focus {
+  border: solid grey;
+  cursor: pointer;
+}
+
+#notes {
+  width: 100%;
+}

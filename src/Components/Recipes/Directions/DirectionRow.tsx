@@ -1,5 +1,6 @@
 import React from "react";
 import Direction from "Types/Direction";
+import deleteIcon from "images/delete-icon.png";
 
 interface DirectionRowProps {
   index: number;
@@ -8,10 +9,7 @@ interface DirectionRowProps {
     event: React.ChangeEvent<HTMLTextAreaElement>,
     index: number
   ) => void;
-  handleDeleteDirection: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    index: number
-  ) => void;
+  handleDeleteDirection: (index: number) => void;
 }
 
 const DirectionRow: React.FC<DirectionRowProps> = ({
@@ -27,7 +25,12 @@ const DirectionRow: React.FC<DirectionRowProps> = ({
         value={direction.description}
         onChange={(e) => handleDesciptionChange(e, index)}
       />
-      <button onClick={(e) => handleDeleteDirection(e, index)}>delete</button>
+      <img
+        src={deleteIcon}
+        alt="delete"
+        className="delete-icon"
+        onClick={() => handleDeleteDirection(index)}
+      />
     </div>
   );
 };

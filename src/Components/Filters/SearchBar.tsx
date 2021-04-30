@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/SearchBar.css";
 
 interface SearchBarProps {
   searchInput: string;
@@ -11,9 +12,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
 }) => {
   return (
     <input
-      id="search-bar"
+      id="recipe-name-search"
       type="text"
-      placeholder="search"
+      placeholder="Recipe Name"
       onChange={handleInputChange}
       value={searchInput}
     />

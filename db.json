@@ -2,34 +2,26 @@
   "recipes": [
     {
       "id": "1",
-      "title": "Ham and Cheese",
+      "title": "Ham and Cheese Sandwich",
       "servingSize": 1,
       "prepTime": 5,
       "cookingTime": 2,
       "ingredients": [
         {
           "name": "sourdough bread",
-          "amount": "2",
-          "measurement": "slices",
-          "notes": ""
+          "quantity": "2 slices"
         },
         {
           "name": "ham",
-          "amount": "1",
-          "measurement": "slice",
-          "notes": ""
+          "quantity": "1 slice"
         },
         {
           "name": "grated cheddar",
-          "amount": "20",
-          "measurement": "g",
-          "notes": ""
+          "quantity": "20g"
         },
         {
           "name": "butter",
-          "amount": "5",
-          "measurement": "g",
-          "notes": ""
+          "quantity": "5g"
         }
       ],
       "directions": [
@@ -55,7 +47,8 @@
         "protein": 34,
         "carbs": 144,
         "fat": 15
-      }
+      },
+      "notes": "Some notes..."
     },
     {
       "id": "2",
@@ -66,21 +59,15 @@
       "ingredients": [
         {
           "name": "pasta",
-          "amount": "100",
-          "measurement": "g",
-          "notes": ""
+          "quantity": "100g"
         },
         {
           "name": "pesto",
-          "amount": "10",
-          "measurement": "g",
-          "notes": ""
+          "quantity": "10g"
         },
         {
           "name": "grated cheddar",
-          "amount": "20",
-          "measurement": "g",
-          "notes": ""
+          "quantity": "20g"
         }
       ],
       "directions": [

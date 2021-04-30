@@ -9,9 +9,9 @@ const IngredientsList: React.FC<IngredientsListProps> = ({ ingredients }) => {
   return (
     <div>
       <h3>Ingredients</h3>
-      {ingredients.map(({ amount, measurement, name, notes }, index) => (
+      {ingredients.map(({ quantity, name }, index) => (
         <div key={index}>
-          {amount} {measurement} {name} {notes}
+          {quantity} {name}
         </div>
       ))}
     </div>
