@@ -7,12 +7,14 @@ import "./styles/RecipeModal.css";
 
 interface RecipeModalProps {
   recipe: Recipe;
+  setSelectedRecipe: React.Dispatch<React.SetStateAction<Recipe | undefined>>;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
   handleSaveRecipe: (recipe: Recipe) => void;
 }
 
 const RecipeModal: React.FC<RecipeModalProps> = ({
   recipe,
+  setSelectedRecipe,
   setOpenModal,
   handleSaveRecipe,
 }) => {
@@ -23,7 +25,13 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
   const handleClickOutside = (event: any): void => {
     if (node.current && !node.current.contains(event.target)) {
       setOpenModal(false);
+      setSelectedRecipe(undefined);
     }
+  };
+
+  const handleCloseModal = (): void => {
+    setOpenModal(false);
+    setSelectedRecipe(undefined);
   };
 
   useEffect(() => {
@@ -43,10 +51,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
             onClick={() => setEditMode(!editMode)}
             alt="edit-icon"
           />
-          <span
-            className="close modal-action"
-            onClick={() => setOpenModal(false)}
-          >
+          <span className="close modal-action" onClick={handleCloseModal}>
             &times;
           </span>
         </div>

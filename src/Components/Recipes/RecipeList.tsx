@@ -11,7 +11,7 @@ const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchInput, setSearchInput] = useState<string>("");
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedRecipe, setSelectedRecipe] = useState<Recipe>({});
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe>();
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -29,6 +29,18 @@ const RecipeList: React.FC = () => {
     setSelectedRecipe(updatedRecipe);
     updateRecipe(updatedRecipe);
   };
+
+  const displayModalContent = () =>
+    selectedRecipe ? (
+      <RecipeModal
+        recipe={selectedRecipe}
+        handleSaveRecipe={handleSaveRecipe}
+        setSelectedRecipe={setSelectedRecipe}
+        setOpenModal={setOpenModal}
+      />
+    ) : (
+      <div>Hello</div>
+    );
 
   useEffect(() => {
     getRecipes(setRecipes);
@@ -57,13 +69,7 @@ const RecipeList: React.FC = () => {
           />
         ))}
       </div>
-      {openModal && (
-        <RecipeModal
-          recipe={selectedRecipe}
-          handleSaveRecipe={handleSaveRecipe}
-          setOpenModal={setOpenModal}
-        />
-      )}
+      {openModal && displayModalContent()}
     </div>
   );
 };
