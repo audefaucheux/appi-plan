@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import Recipe from "Types/Recipe";
+import Recipe from "../../Types/Recipe";
 import Tag from "./Tag";
 import placeholderImage from "images/placeholder-image.jpg";
 import "./styles/RecipeCard.css";

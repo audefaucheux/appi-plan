@@ -1,5 +1,5 @@
 import React from "react";
-import NutritionalInfo from "Types/NutritionalInfo";
+import NutritionalInfo from "../../Types/NutritionalInfo";
 
 interface NutritionalInfoProps {
   nutritionalInfo: NutritionalInfo;

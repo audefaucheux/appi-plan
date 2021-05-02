@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Recipe from "Types/Recipe";
-import Ingredient from "Types/Ingredient";
-import Direction from "Types/Direction";
+import Recipe from "../../Types/Recipe";
+import Ingredient from "../../Types/Ingredient";
+import Direction from "../../Types/Direction";
 import IngredientsForm from "./Ingredients/IngredientsForm";
 import DirectionsForm from "./Directions/DirectionsForm";
 import Tag from "./Tag";
@@ -19,16 +19,20 @@ const RecipeForm: React.FC<RecipeFormProps> = ({
   handleSaveRecipe,
   setEditMode,
 }) => {
-  const [title, setTitle] = useState<string>(recipe.title);
+  const [title, setTitle] = useState<string | undefined>(recipe.title);
   const [prepTime, setPrepTime] = useState<number | undefined>(recipe.prepTime);
   const [cookingTime, setCookingTime] = useState<number | undefined>(
     recipe.cookingTime
   );
-  const [servingSize, setServingSize] = useState<number>(recipe.servingSize);
-  const [ingredients, setIngredients] = useState<Ingredient[]>(
+  const [servingSize, setServingSize] = useState<number | undefined>(
+    recipe.servingSize
+  );
+  const [ingredients, setIngredients] = useState<Ingredient[] | undefined>(
     recipe.ingredients
   );
-  const [directions, setDirections] = useState<Direction[]>(recipe.directions);
+  const [directions, setDirections] = useState<Direction[] | undefined>(
+    recipe.directions
+  );
   const [notes, setNotes] = useState<string | undefined>(recipe.notes);
 
   const handleSaveClick = (

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import Recipe from "Types/Recipe";
-import RecipeCard from "Components/Recipes/RecipeCard";
+import Recipe from "../../Types/Recipe";
+import RecipeCard from "./RecipeCard";
 import SearchBar from "../Filters/SearchBar";
 import RecipeModal from "./RecipeModal";
-import { getRecipes } from "Services/AppiPlanBackend";
-import { updateRecipe } from "Services/AppiPlanBackend";
+import { getRecipes } from "../../Services/AppiPlanBackend";
+import { updateRecipe } from "../../Services/AppiPlanBackend";
 import "./styles/RecipeList.css";
 
 const RecipeList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchInput, setSearchInput] = useState<string>("");
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | undefined>();
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe>({});
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -19,6 +19,11 @@ const RecipeList: React.FC = () => {
 
   const filterRecipes = (recipes: Recipe[]): Recipe[] =>
     recipes.filter(({ title }) => title.toLowerCase().includes(searchInput));
+
+  const handleAddRecipe = () => {
+    console.log("Add recipe");
+    setOpenModal(true);
+  };
 
   const handleSaveRecipe = (updatedRecipe: Recipe): void => {
     setSelectedRecipe(updatedRecipe);
@@ -38,6 +43,9 @@ const RecipeList: React.FC = () => {
           handleInputChange={handleSearchInputChange}
           searchInput={searchInput}
         />
+        <button id="add-recipe" onClick={handleAddRecipe}>
+          Add Recipe
+        </button>
       </div>
       <div id="recipe-list">
         {filterRecipes(recipes).map((recipe, index) => (
@@ -49,7 +57,7 @@ const RecipeList: React.FC = () => {
           />
         ))}
       </div>
-      {openModal && selectedRecipe && (
+      {openModal && (
         <RecipeModal
           recipe={selectedRecipe}
           handleSaveRecipe={handleSaveRecipe}

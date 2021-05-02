@@ -1,6 +1,6 @@
 import React from "react";
 import { cloneDeep } from "lodash";
-import Direction from "Types/Direction";
+import Direction from "../../../Types/Direction";
 import DirectionRow from "./DirectionRow";
 
 interface DirectionsFormProps {

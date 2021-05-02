@@ -1,5 +1,5 @@
 import React from "react";
-import Ingredient from "Types/Ingredient";
+import Ingredient from "../../../Types/Ingredient";
 import deleteIcon from "images/delete-icon.png";
 
 interface IngredientsFormProps {

@@ -1,6 +1,6 @@
 import React from "react";
 import { cloneDeep } from "lodash";
-import Ingredient from "Types/Ingredient";
+import Ingredient from "../../../Types/Ingredient";
 import IngredientRow from "./IngredientRow";
 
 interface IngredientsFormProps {
