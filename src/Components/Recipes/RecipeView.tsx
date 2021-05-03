@@ -1,17 +1,17 @@
-import React from "react";
-import Recipe from "Types/Recipe";
-import { convertMinutesToHours } from "Helpers/convertTime";
+import React, { FC } from "react";
+import Recipe from "../../Types/Recipe";
+import { convertMinutesToHours } from "../../Helpers/convertTime";
 import placeholderImage from "images/placeholder-image.jpg";
 import IngredientsList from "./Ingredients/IngredientsList";
 import DirectionsList from "./Directions/DirectionsList";
-import NutritionalInformation from "./NutritionalInformation";
-import Tag from "./Tag";
+import NutritionalInfoList from "./NutritionalInfo/NutritionalInfoList";
+import DisplayTag from "./Tags/DisplayTag";
 import "./styles/RecipeView.css";
 
 interface RecipeViewProps {
   recipe: Recipe;
 }
-const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
+const RecipeView: FC<RecipeViewProps> = ({ recipe }) => {
   const {
     title,
     prepTime,
@@ -32,18 +32,18 @@ const RecipeView: React.FC<RecipeViewProps> = ({ recipe }) => {
           <p>Preparation Time: {convertMinutesToHours(prepTime)}</p>
           <p>Cooking Time: {convertMinutesToHours(cookingTime)}</p>
           <p>Service Size: {servingSize}</p>
-          {nutritionalInfo && (
-            <NutritionalInformation nutritionalInfo={nutritionalInfo} />
-          )}
+          {nutritionalInfo && <NutritionalInfoList nutritionalInfo={nutritionalInfo} />}
         </div>
       </div>
-      <IngredientsList ingredients={ingredients} />
-      <DirectionsList directions={directions} />
+      {ingredients && <IngredientsList ingredients={ingredients} />}
+      {directions && <DirectionsList directions={directions} />}
       <h3>Notes</h3>
       <p>{notes}</p>
       <h3>Tags</h3>
       <div className="tag-list">
-        {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+        {tags.map((tag, index) => (
+          <DisplayTag key={index} tag={tag} />
+        ))}
       </div>
     </div>
   );

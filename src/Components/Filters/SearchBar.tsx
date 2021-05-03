@@ -1,15 +1,12 @@
-import React from "react";
+import React, { ChangeEvent, FC } from "react";
 import "./styles/SearchBar.css";
 
 interface SearchBarProps {
   searchInput: string;
-  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({
-  searchInput,
-  handleInputChange,
-}) => {
+const SearchBar: FC<SearchBarProps> = ({ searchInput, handleInputChange }) => {
   return (
     <input
       id="recipe-name-search"

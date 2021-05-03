@@ -1,8 +1,8 @@
 interface NutritionalInfo {
-  calories: number | undefined;
-  protein: number | undefined;
-  carbs: number | undefined;
-  fat: number | undefined;
+  calories?: number;
+  protein?: number;
+  carbs?: number;
+  fat?: number;
 }
 
 export default NutritionalInfo;

@@ -21,12 +21,3 @@ table {
 th {
   text-align: left;
 }
-
-/* directions form */
-.direction-update {
-  display: flex;
-}
-
-.direction-update textarea {
-  width: 90%;
-}

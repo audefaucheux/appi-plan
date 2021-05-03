@@ -1,19 +1,18 @@
-import React from "react";
-import Ingredient from "Types/Ingredient";
-import deleteIcon from "images/delete-icon.png";
+import React, { MouseEvent, FC, ChangeEvent } from "react";
+import Ingredient from "../../../Types/Ingredient";
 
 interface IngredientsFormProps {
   index: number;
   ingredient: Ingredient;
   handleIngredientChange: (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>,
     field: keyof Ingredient,
     index: number
   ) => void;
-  handleIngredientDelete: (index: number) => void;
+  handleIngredientDelete: (event: MouseEvent, index: number) => void;
 }
 
-const IngredientRow: React.FC<IngredientsFormProps> = ({
+const IngredientRow: FC<IngredientsFormProps> = ({
   index,
   ingredient,
   handleIngredientChange,
@@ -25,7 +24,6 @@ const IngredientRow: React.FC<IngredientsFormProps> = ({
     <tr key={index}>
       <td>
         <input
-          id={`ingredient-quantity-${index}`}
           type="text"
           value={quantity}
           onChange={(e) => {
@@ -35,7 +33,6 @@ const IngredientRow: React.FC<IngredientsFormProps> = ({
       </td>
       <td>
         <input
-          id={`ingredient-name-${index}`}
           type="text"
           value={name}
           onChange={(e) => {
@@ -44,12 +41,9 @@ const IngredientRow: React.FC<IngredientsFormProps> = ({
         />
       </td>
       <td>
-        <img
-          src={deleteIcon}
-          alt="delete"
-          className="delete-icon"
-          onClick={() => handleIngredientDelete(index)}
-        />
+        <button type="button" onClick={(e) => handleIngredientDelete(e, index)}>
+          &times;
+        </button>
       </td>
     </tr>
   );

@@ -1,37 +1,36 @@
-import React from "react";
-import Direction from "Types/Direction";
-import deleteIcon from "images/delete-icon.png";
+import React, { FC, MouseEvent, ChangeEvent } from "react";
+import Direction from "../../../Types/Direction";
+import "./styles/DirectionRow.css";
 
 interface DirectionRowProps {
   index: number;
   direction: Direction;
-  handleDesciptionChange: (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-    index: number
-  ) => void;
-  handleDeleteDirection: (index: number) => void;
+  handleDesciptionChange: (event: ChangeEvent<HTMLTextAreaElement>, index: number) => void;
+  handleDeleteDirection: (event: MouseEvent, index: number) => void;
 }
 
-const DirectionRow: React.FC<DirectionRowProps> = ({
+const DirectionRow: FC<DirectionRowProps> = ({
   index,
   direction,
   handleDesciptionChange,
   handleDeleteDirection,
 }) => {
   return (
-    <div key={index} className="direction-update">
-      {direction.order}.
-      <textarea
-        value={direction.description}
-        onChange={(e) => handleDesciptionChange(e, index)}
-      />
-      <img
-        src={deleteIcon}
-        alt="delete"
-        className="delete-icon"
-        onClick={() => handleDeleteDirection(index)}
-      />
-    </div>
+    <tr key={index}>
+      <td>{direction.order}</td>
+      <td>
+        <textarea
+          className="direction-description-update"
+          value={direction.description}
+          onChange={(e) => handleDesciptionChange(e, index)}
+        />
+      </td>
+      <td>
+        <button type="button" onClick={(e) => handleDeleteDirection(e, index)}>
+          &times;
+        </button>
+      </td>
+    </tr>
   );
 };
 
