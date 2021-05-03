@@ -5,6 +5,7 @@ import Direction from "../../Types/Direction";
 import NutritionalInfo from "../../Types/NutritionalInfo";
 import IngredientsForm from "./Ingredients/IngredientsForm";
 import DirectionsForm from "./Directions/DirectionsForm";
+import NutritionalInfoForm from "./NutritionalInfo/NutritionalInfoForm";
 import TagsForm from "./Tags/TagsForm";
 import placeholderImage from "images/placeholder-image.jpg";
 import "./styles/RecipeForm.css";
@@ -22,7 +23,6 @@ const RecipeForm: FC<RecipeFormProps> = ({
   handleUpdateRecipe,
   setEditMode,
 }) => {
-  console.log("render recipe form");
   const defaultRecipe = {
     title: recipe?.title || "",
     prepTime: recipe?.prepTime || 0,
@@ -44,7 +44,6 @@ const RecipeForm: FC<RecipeFormProps> = ({
   const [nutritionalInfo, setNutritionalInfo] = useState<NutritionalInfo | undefined>(
     recipe?.nutritionalInfo
   );
-  console.log(tags);
 
   const handleSaveClick = (event: MouseEvent) => {
     event.preventDefault();
@@ -116,6 +115,10 @@ const RecipeForm: FC<RecipeFormProps> = ({
               required
             />
           </label>
+          <NutritionalInfoForm
+            nutritionalInfo={nutritionalInfo}
+            setNutritionalInfo={setNutritionalInfo}
+          />
         </div>
       </div>
       <IngredientsForm ingredients={ingredients} setIngredients={setIngredients} />

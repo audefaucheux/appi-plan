@@ -4,7 +4,7 @@ import { convertMinutesToHours } from "../../Helpers/convertTime";
 import placeholderImage from "images/placeholder-image.jpg";
 import IngredientsList from "./Ingredients/IngredientsList";
 import DirectionsList from "./Directions/DirectionsList";
-import NutritionalInformation from "./NutritionalInformation";
+import NutritionalInfoList from "./NutritionalInfo/NutritionalInfoList";
 import DisplayTag from "./Tags/DisplayTag";
 import "./styles/RecipeView.css";
 
@@ -32,7 +32,7 @@ const RecipeView: FC<RecipeViewProps> = ({ recipe }) => {
           <p>Preparation Time: {convertMinutesToHours(prepTime)}</p>
           <p>Cooking Time: {convertMinutesToHours(cookingTime)}</p>
           <p>Service Size: {servingSize}</p>
-          {nutritionalInfo && <NutritionalInformation nutritionalInfo={nutritionalInfo} />}
+          {nutritionalInfo && <NutritionalInfoList nutritionalInfo={nutritionalInfo} />}
         </div>
       </div>
       {ingredients && <IngredientsList ingredients={ingredients} />}
