@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, FC } from "react";
 import Recipe from "../../Types/Recipe";
-import Tag from "./Tag";
+import DisplayTag from "./Tags/DisplayTag";
 import placeholderImage from "images/placeholder-image.jpg";
 import "./styles/RecipeCard.css";
 
@@ -10,11 +10,7 @@ interface RecipeCardProps {
   setSelectedRecipe: Dispatch<SetStateAction<Recipe | undefined>>;
 }
 
-const RecipeCard: React.FC<RecipeCardProps> = ({
-  recipe,
-  setOpenModal,
-  setSelectedRecipe,
-}) => {
+const RecipeCard: FC<RecipeCardProps> = ({ recipe, setOpenModal, setSelectedRecipe }) => {
   const { title, tags } = recipe;
 
   return (
@@ -31,7 +27,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
       <div id="recipe-card-description">
         {title}
         <div className="tag-list">
-          {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+          {tags && tags.map((tag, index) => <DisplayTag key={index} tag={tag} />)}
         </div>
       </div>
     </div>

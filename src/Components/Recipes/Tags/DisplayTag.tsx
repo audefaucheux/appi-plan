@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import "./styles/DisplayTag.css";
 
 interface DisplayTagProps {
   tag: string;
 }
 
-const DisplayTag: React.FC<DisplayTagProps> = ({ tag }) => {
+const DisplayTag: FC<DisplayTagProps> = ({ tag }) => {
   return <div className="tag">{tag}</div>;
 };
 

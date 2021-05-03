@@ -1,13 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import NutritionalInfo from "../../Types/NutritionalInfo";
 
 interface NutritionalInfoProps {
   nutritionalInfo: NutritionalInfo;
 }
 
-const NutritionalInformation: React.FC<NutritionalInfoProps> = ({
-  nutritionalInfo,
-}) => {
+const NutritionalInformation: FC<NutritionalInfoProps> = ({ nutritionalInfo }) => {
   const { calories, protein, carbs, fat } = nutritionalInfo;
   return (
     <div>
