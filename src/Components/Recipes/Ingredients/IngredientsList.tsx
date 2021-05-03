@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import Ingredient from "../../../Types/Ingredient";
 
 interface IngredientsListProps {
   ingredients: Ingredient[];
 }
 
-const IngredientsList: React.FC<IngredientsListProps> = ({ ingredients }) => {
+const IngredientsList: FC<IngredientsListProps> = ({ ingredients }) => {
   return (
     <div>
       <h3>Ingredients</h3>

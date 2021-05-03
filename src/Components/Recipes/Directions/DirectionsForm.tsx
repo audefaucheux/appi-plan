@@ -1,42 +1,39 @@
-import React from "react";
+import React, { MouseEvent, ChangeEvent, Dispatch, SetStateAction, FC } from "react";
 import { cloneDeep } from "lodash";
 import Direction from "../../../Types/Direction";
 import DirectionRow from "./DirectionRow";
 
 interface DirectionsFormProps {
   directions: Direction[];
-  setDirections: React.Dispatch<React.SetStateAction<Direction[]>>;
+  setDirections: Dispatch<SetStateAction<Direction[]>>;
 }
 
-const DirectionsForm: React.FC<DirectionsFormProps> = ({
-  directions,
-  setDirections,
-}) => {
+const DirectionsForm: FC<DirectionsFormProps> = ({ directions, setDirections }) => {
+  const clonedDirections = cloneDeep(directions) || [];
+  const emptyDirection = {
+    order: clonedDirections.length + 1,
+    description: "",
+  };
+
   const reassignDirectionsOrder = (directions: Direction[]): Direction[] =>
     directions.map((direction, index) => ({
       ...direction,
       order: index + 1,
     }));
 
-  const createEmptyDirectionRow = (order: number): Direction => ({
-    order,
-    description: "",
-  });
+  const handleDesciptionAdd = (event: MouseEvent) => {
+    event.preventDefault();
+    clonedDirections.push(emptyDirection);
+    setDirections(clonedDirections);
+  };
 
-  const handleDesciptionChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-    index: number
-  ) => {
-    const clonedDirections = cloneDeep(directions);
-    if (!clonedDirections[index]) {
-      clonedDirections.splice(index, 0, createEmptyDirectionRow(index + 1));
-    }
+  const handleDesciptionChange = (event: ChangeEvent<HTMLTextAreaElement>, index: number) => {
     clonedDirections[index].description = event.target.value;
     setDirections(clonedDirections);
   };
 
-  const handleDeleteDirection = (index: number) => {
-    const clonedDirections = cloneDeep(directions);
+  const handleDeleteDirection = (event: MouseEvent, index: number) => {
+    event.preventDefault();
     clonedDirections.splice(index, 1);
     const reorderedDirections = reassignDirectionsOrder(clonedDirections);
     setDirections(reorderedDirections);
@@ -44,23 +41,34 @@ const DirectionsForm: React.FC<DirectionsFormProps> = ({
 
   return (
     <div>
-      <h3>Directions</h3>
-      {directions.map((direction, index) => (
-        <DirectionRow
-          key={index}
-          index={index}
-          direction={direction}
-          handleDesciptionChange={handleDesciptionChange}
-          handleDeleteDirection={handleDeleteDirection}
-        />
-      ))}
-      <DirectionRow
-        key={directions.length}
-        index={directions.length}
-        direction={createEmptyDirectionRow(directions.length + 1)}
-        handleDesciptionChange={handleDesciptionChange}
-        handleDeleteDirection={handleDeleteDirection}
-      />
+      <h3>Directions:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {clonedDirections.map((direction, index) => (
+            <DirectionRow
+              key={index}
+              index={index}
+              direction={direction}
+              handleDesciptionChange={handleDesciptionChange}
+              handleDeleteDirection={handleDeleteDirection}
+            />
+          ))}
+          <tr>
+            <td>
+              <button type="button" onClick={handleDesciptionAdd}>
+                + Add
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

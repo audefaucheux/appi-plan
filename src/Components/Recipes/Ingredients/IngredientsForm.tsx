@@ -1,37 +1,36 @@
-import React from "react";
+import React, { useEffect, SetStateAction, Dispatch, MouseEvent, ChangeEvent, FC } from "react";
 import { cloneDeep } from "lodash";
 import Ingredient from "../../../Types/Ingredient";
 import IngredientRow from "./IngredientRow";
+// import NewIngredientRow from "./NewIngredientRow";
 
 interface IngredientsFormProps {
   ingredients: Ingredient[];
-  setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>;
+  setIngredients: Dispatch<SetStateAction<Ingredient[]>>;
 }
 
-const IngredientsForm: React.FC<IngredientsFormProps> = ({
-  ingredients,
-  setIngredients,
-}) => {
-  const emptyIngredientRow: Ingredient = {
-    name: "",
-    quantity: "",
+const IngredientsForm: FC<IngredientsFormProps> = ({ ingredients, setIngredients }) => {
+  const clonedIngredients = cloneDeep(ingredients) || [];
+  const emptyRow: Ingredient = { quantity: "", name: "" };
+
+  const handleIngredientAdd = (event: MouseEvent) => {
+    event.preventDefault();
+    clonedIngredients.push(emptyRow);
+    setIngredients(clonedIngredients);
   };
 
   const handleIngredientChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>,
     field: keyof Ingredient,
     index: number
   ) => {
-    const clonedIngredients = cloneDeep(ingredients);
-    if (!clonedIngredients[index]) {
-      clonedIngredients.splice(index, 0, emptyIngredientRow);
-    }
+    event.preventDefault();
     clonedIngredients[index][field] = event.target.value;
     setIngredients(clonedIngredients);
   };
 
-  const handleIngredientDelete = (index: number) => {
-    const clonedIngredients = cloneDeep(ingredients);
+  const handleIngredientDelete = (e: MouseEvent, index: number) => {
+    e.preventDefault();
     clonedIngredients.splice(index, 1);
     setIngredients(clonedIngredients);
   };
@@ -48,7 +47,7 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
           </tr>
         </thead>
         <tbody>
-          {ingredients.map((ingredient, index) => (
+          {clonedIngredients.map((ingredient, index) => (
             <IngredientRow
               key={index}
               index={index}
@@ -57,13 +56,13 @@ const IngredientsForm: React.FC<IngredientsFormProps> = ({
               handleIngredientDelete={handleIngredientDelete}
             />
           ))}
-          <IngredientRow
-            key={ingredients.length}
-            index={ingredients.length}
-            ingredient={emptyIngredientRow}
-            handleIngredientChange={handleIngredientChange}
-            handleIngredientDelete={handleIngredientDelete}
-          />
+          <tr>
+            <td>
+              <button type="button" onClick={handleIngredientAdd}>
+                + Add
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

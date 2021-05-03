@@ -1,25 +1,35 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, {
+  useRef,
+  useEffect,
+  Dispatch,
+  FC,
+  SetStateAction,
+  MutableRefObject,
+  useState,
+} from "react";
 import Recipe from "../../Types/Recipe";
 import RecipeView from "./RecipeView";
 import RecipeForm from "./RecipeForm";
 import "./styles/RecipeModal.css";
 
 interface RecipeModalProps {
-  recipe: Recipe;
-  setSelectedRecipe: React.Dispatch<React.SetStateAction<Recipe | undefined>>;
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-  handleSaveRecipe: (recipe: Recipe) => void;
+  recipe?: Recipe;
+  setSelectedRecipe: Dispatch<SetStateAction<Recipe | undefined>>;
+  setOpenModal: Dispatch<SetStateAction<boolean>>;
+  handleCreateRecipe: (recipe: Partial<Recipe>) => void;
+  handleUpdateRecipe: (recipe: Recipe) => void;
 }
 
-const RecipeModal: React.FC<RecipeModalProps> = ({
+const RecipeModal: FC<RecipeModalProps> = ({
   recipe,
   setSelectedRecipe,
   setOpenModal,
-  handleSaveRecipe,
+  handleCreateRecipe,
+  handleUpdateRecipe,
 }) => {
   const [editMode, setEditMode] = useState<boolean>(false);
 
-  const node = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const node = useRef() as MutableRefObject<HTMLInputElement>;
 
   const handleClickOutside = (event: any): void => {
     if (node.current && !node.current.contains(event.target)) {
@@ -44,15 +54,18 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
     <div id="myModal" className="modal">
       <div className="modal-content" ref={node}>
         <div className="modal-actions-menu">
-          <button onClick={() => setEditMode(!editMode)}>Edit</button>
+          <button type="button" onClick={() => setEditMode(!editMode)}>
+            Edit
+          </button>
           <span className="close modal-action" onClick={handleCloseModal}>
             &times;
           </span>
         </div>
-        {editMode ? (
+        {editMode || !recipe ? (
           <RecipeForm
             recipe={recipe}
-            handleSaveRecipe={handleSaveRecipe}
+            handleCreateRecipe={handleCreateRecipe}
+            handleUpdateRecipe={handleUpdateRecipe}
             setEditMode={setEditMode}
           />
         ) : (
