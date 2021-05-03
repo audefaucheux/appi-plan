@@ -1,4 +1,4 @@
-export const convertMinutesToHours = (time: number | undefined): string => {
+export const convertMinutesToHours = (time?: number): string => {
   if (!time) return "";
 
   const hours = Math.floor(time / 60);

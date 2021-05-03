@@ -5,14 +5,14 @@ import NutritionalInfo from "./NutritionalInfo";
 interface Recipe {
   id: string;
   title: string;
-  prepTime: number | undefined;
-  cookingTime: number | undefined;
-  servingSize: number;
-  ingredients: Ingredient[];
-  directions: Direction[];
-  nutritionalInfo: NutritionalInfo;
-  notes: string | undefined;
-  tags: string[];
+  prepTime?: number;
+  cookingTime?: number;
+  servingSize?: number;
+  ingredients?: Ingredient[];
+  directions?: Direction[];
+  nutritionalInfo?: NutritionalInfo;
+  notes?: string;
+  tags?: string[];
 }
 
 export default Recipe;
