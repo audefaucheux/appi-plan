@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import Recipe from "../../Types/Recipe";
 import RecipeView from "./RecipeView";
 import RecipeForm from "./RecipeForm";
-import editIcon from "images/edit-icon.png";
 import "./styles/RecipeModal.css";
 
 interface RecipeModalProps {
@@ -45,12 +44,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
     <div id="myModal" className="modal">
       <div className="modal-content" ref={node}>
         <div className="modal-actions-menu">
-          <img
-            className="modal-action"
-            src={editIcon}
-            onClick={() => setEditMode(!editMode)}
-            alt="edit-icon"
-          />
+          <button onClick={() => setEditMode(!editMode)}>Edit</button>
           <span className="close modal-action" onClick={handleCloseModal}>
             &times;
           </span>
