@@ -18,6 +18,7 @@ interface RecipeModalProps {
   setOpenModal: Dispatch<SetStateAction<boolean>>;
   handleCreateRecipe: (recipe: Partial<Recipe>) => void;
   handleUpdateRecipe: (recipe: Recipe) => void;
+  handleDeleteRecipe: (recipe: Recipe) => void;
 }
 
 const RecipeModal: FC<RecipeModalProps> = ({
@@ -26,6 +27,7 @@ const RecipeModal: FC<RecipeModalProps> = ({
   setOpenModal,
   handleCreateRecipe,
   handleUpdateRecipe,
+  handleDeleteRecipe,
 }) => {
   const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -54,6 +56,11 @@ const RecipeModal: FC<RecipeModalProps> = ({
     <div id="myModal" className="modal">
       <div className="modal-content" ref={node}>
         <div className="modal-actions-menu">
+          {recipe && (
+            <button type="button" onClick={() => handleDeleteRecipe(recipe)}>
+              Delete
+            </button>
+          )}
           <button type="button" onClick={() => setEditMode(!editMode)}>
             Edit
           </button>

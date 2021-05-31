@@ -3,7 +3,7 @@ import Recipe from "../../Types/Recipe";
 import RecipeCard from "./RecipeCard";
 import SearchBar from "../Filters/SearchBar";
 import RecipeModal from "./RecipeModal";
-import { getRecipes, createRecipe, updateRecipe } from "../../Services/AppiPlanBackend";
+import { getRecipes, createRecipe, updateRecipe, deleteRecipe } from "../../Services/AppiPlanBackend";
 import "./styles/RecipeList.css";
 
 const RecipeList: FC = () => {
@@ -29,6 +29,12 @@ const RecipeList: FC = () => {
 
   const handleUpdateRecipe = (updatedRecipe: Recipe): void => {
     updateRecipe(updatedRecipe, setSelectedRecipe);
+  };
+
+  const handleDeleteRecipe = (recipe: Recipe): void => {
+    deleteRecipe(recipe);
+    setSelectedRecipe(undefined)
+    setOpenModal(false);
   };
 
   useEffect(() => {
@@ -62,6 +68,7 @@ const RecipeList: FC = () => {
           handleUpdateRecipe={handleUpdateRecipe}
           setSelectedRecipe={setSelectedRecipe}
           setOpenModal={setOpenModal}
+          handleDeleteRecipe={handleDeleteRecipe}
         />
       )}
     </div>

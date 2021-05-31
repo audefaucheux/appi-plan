@@ -4,9 +4,7 @@ import Recipe from "../../Types/Recipe";
 
 const server = "http://localhost:3004";
 
-export const getRecipes = async (
-  setter: Dispatch<SetStateAction<Recipe[]>>
-): Promise<void> => {
+export const getRecipes = async (setter: Dispatch<SetStateAction<Recipe[]>>): Promise<void> => {
   try {
     const recipes = await axios.get(`${server}/recipes`);
     setter(recipes.data);
@@ -32,11 +30,16 @@ export const updateRecipe = async (
   setter: Dispatch<SetStateAction<Recipe | undefined>>
 ): Promise<void> => {
   try {
-    const updatedRecipe = await axios.patch(
-      `${server}/recipes/${recipe.id}`,
-      recipe
-    );
+    const updatedRecipe = await axios.patch(`${server}/recipes/${recipe.id}`, recipe);
     setter(updatedRecipe.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteRecipe = async (recipe: Recipe): Promise<void> => {
+  try {
+    await axios.delete(`${server}/recipes/${recipe.id}`);
   } catch (error) {
     console.log(error);
   }
